@@ -181,8 +181,12 @@ Object.defineProperty(o, "a", {
   value: 37,
   writable: false,
 });
-
 console.log(o.a); // 37
+
+Object.defineProperty(o, "b", {
+  value: 25,
+});
+
 o.a = 25; // No error thrown
 // (it would throw in strict mode,
 // even if the value had been the same)
