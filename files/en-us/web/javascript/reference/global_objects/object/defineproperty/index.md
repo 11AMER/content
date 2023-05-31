@@ -182,11 +182,19 @@ Object.defineProperty(o, "a", {
   writable: false,
 });
 
-console.log(o.a); // 37
 o.a = 25; // No error thrown
 // (it would throw in strict mode,
 // even if the value had been the same)
-console.log(o.a); // 37; the assignment didn't work
+
+Object.defineProperty(o, "a", {
+  value: 37,
+}); // No error thrown because it's value still the same
+
+console.log(o.a); // 37
+
+Object.defineProperty(o, "a", {
+  value: 25,
+}); // TypeError: cannot redefine property: a.
 
 // strict mode
 (() => {
